@@ -14,8 +14,6 @@ def todo_list_detail(request, id):
     todo_list = get_object_or_404(TodoList, id=id)
     return render(request, 'todos/todo_list_detail.html', {'todo_list': todo_list})
 
-
-
 def todo_detail_view(request, id):
     todo_list = get_object_or_404(TodoList, id=id)
     todos = Todo.objects.filter(todo_list=todo_list)

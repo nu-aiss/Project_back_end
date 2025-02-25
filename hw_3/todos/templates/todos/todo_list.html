@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список задач</title>
+</head>
+<body>
+    <h1>Список задач</h1>
+    <ul>
+        {% for todo in todos %}
+            <li>
+                <a href="{% url 'todo_detail' todo.id %}">{{ todo.title }}</a> — 
+                {% if todo.status %}✅ Выполнено{% else %}❌ В процессе{% endif %}
+                <a href="{% url 'todo_delete' todo.id %}">Удалить</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'todo_create' %}">Добавить задачу</a>
+</body>
+</html>

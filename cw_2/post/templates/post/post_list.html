@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 50px;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: auto;
+        }
+        h2 {
+            color: #333;
+        }
+        .post {
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+        }
+        .post h3 {
+            color: #333;
+        }
+        .post p {
+            color: #666;
+        }
+        .post .author {
+            font-weight: bold;
+            color: #333;
+        }
+        .post .buttons {
+            margin-top: 10px;
+        }
+        .post .buttons a {
+            padding: 5px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .post .buttons a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>All Posts</h2>
+
+        {% for post in posts %}
+        <div class="post">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.description }}</p>
+            <p class="author">By: {{ post.author }}</p>
+
+            <div class="buttons">
+                <a href="{% url 'post_detail' post.id %}">View Post</a>
+                <a href="{% url 'delete_post' post.id %}">Delete Post</a>
+            </div>
+        </div>
+        {% empty %}
+        <p>No posts available.</p>
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

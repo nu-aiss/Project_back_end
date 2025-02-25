@@ -1,15 +1,18 @@
-{% extends 'todos/base.html' %}
-
-{% block title %}Todo Lists{% endblock %}
-
-{% block content %}
-<h1>Todo Lists</h1>
-<ul>
-    {% for list in lists %}
-        <li>
-            <a href="{% url 'todo_detail' list.id %}">{{ list.title }}</a>
-            <a href="{% url 'todo_list_delete' list.id %}" class="btn btn-danger">Delete</a>
-        </li>
-    {% endfor %}
-</ul>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Lists</title>
+</head>
+<body>
+    <h1>Todo Lists</h1>
+    <ul>
+        {% for todo_list in lists %}
+            <li>
+                <a href="{% url 'todo_list_detail' todo_list.id %}">{{ todo_list.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

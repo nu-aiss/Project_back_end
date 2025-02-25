@@ -5,7 +5,7 @@ from .forms import PostForm
 
 def post_list(request):
     posts = Post.objects.all()
-    return JsonResponse({"posts": list(posts.values())})
+    return render(request, "post/post_list.html", {"posts": posts})
 
 def post_detail(request, id):
     post = get_object_or_404(Post, id=id)
@@ -13,7 +13,7 @@ def post_detail(request, id):
 
 def create_post(request):
     if request.method == "POST":
-        form = PostForm(request.Post)
+        form = PostForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('post_list')
